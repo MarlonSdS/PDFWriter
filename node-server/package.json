@@ -1,0 +1,25 @@
+{
+  "name": "pdfwriter",
+  "version": "1.0.0",
+  "description": "An html-pdf conversor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarlonSdS/PDFWriter.git"
+  },
+  "keywords": [
+    "PDF",
+    "Write",
+    "Read",
+    "HTML"
+  ],
+  "author": "Marlon Santana dos Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarlonSdS/PDFWriter/issues"
+  },
+  "homepage": "https://github.com/MarlonSdS/PDFWriter#readme"
+}
