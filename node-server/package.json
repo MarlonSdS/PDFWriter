@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/MarlonSdS/PDFWriter#readme",
   "dependencies": {
-    "html-pdf": "^3.0.1"
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "html-pdf": "^3.0.1",
+    "nodemon": "^2.0.15"
   }
 }
