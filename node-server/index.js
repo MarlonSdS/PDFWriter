@@ -33,8 +33,17 @@ app.post('/doc', (req, res) =>{
     //var file = parser.HtmlParse(filename, html)
     pdf.WritePdf(html, filename)
 
-    //res.sendStatus(200)
-    res.sendFile(__dirname+'/pdf/+'+filename+'.pdf')
+    res.sendStatus(200)
+    //var file = __dirname+'/pdf/ola.pdf'
+    //res.download(file)
+    //var filestream = fs.createReadStream(file)
+    //filestream.pipe(res)
+})
+
+app.get('/doc/:filename', (req, res) =>{
+    var filename = req.params.filename
+    console.log(filename)
+    res.download(__dirname+'/pdf/'+filename+'.pdf')
 })
 
 //hostear na porta 8080
