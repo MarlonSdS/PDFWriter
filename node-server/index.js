@@ -6,7 +6,12 @@ var express = require('express')
 var bp = require('body-parser')
 var app = express()
 
-app.use(bp.urlencoded())
+app.use(bp.urlencoded({extended: true}))
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 var parser = new HtmlParser
 var pdf = new PdfConversor
@@ -17,15 +22,19 @@ app.use(express.json())
 
 //rota raiz
 app.get('/', (req, res) =>{
-    return res.send('olá')
+    res.send('olá')
+    //res.sendFile(__dirname+'/pdf/hinamizawa.pdf')
+
 })
 
 app.post('/doc', (req, res) =>{
     var {filename, html} = req.body
 
-    parser.HtmlParse(filename, html)
+    //var file = parser.HtmlParse(filename, html)
+    pdf.WritePdf(html, filename)
 
-    res.sendStatus(200)
+    //res.sendStatus(200)
+    res.sendFile(__dirname+'/pdf/+'+filename+'.pdf')
 })
 
 //hostear na porta 8080
