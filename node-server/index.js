@@ -13,6 +13,7 @@ app.use(function (req, res, next) {
     next();
   });
 
+//objetos que irão tratar a manipulação de documentos
 var parser = new HtmlParser
 var pdf = new PdfConversor
 var leitor = new Reader
@@ -23,23 +24,19 @@ app.use(express.json())
 //rota raiz
 app.get('/', (req, res) =>{
     res.send('olá')
-    //res.sendFile(__dirname+'/pdf/hinamizawa.pdf')
 
 })
 
+//rota que recebe o texto 
 app.post('/doc', (req, res) =>{
     var {filename, html} = req.body
 
-    //var file = parser.HtmlParse(filename, html)
     pdf.WritePdf(html, filename)
 
     res.sendStatus(200)
-    //var file = __dirname+'/pdf/ola.pdf'
-    //res.download(file)
-    //var filestream = fs.createReadStream(file)
-    //filestream.pipe(res)
 })
 
+//rota que envia o pdf pronto para download
 app.get('/doc/:filename', (req, res) =>{
     var filename = req.params.filename
     console.log(filename)
@@ -50,14 +47,3 @@ app.get('/doc/:filename', (req, res) =>{
 app.listen(8080, () =>{
     console.log('Servidor rodando na porta 8080')
 })
-
-/*async function main(){
-
-    //parser.HtmlParse(Date.now(), '<h1> Olá mundo </h1>')
-    var html = await leitor.Read('html/teste.html')
-
-    console.log(html)
-    pdf.WritePdf(html, 'teste')
-}
-
-main()*/
